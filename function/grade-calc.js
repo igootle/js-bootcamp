@@ -2,20 +2,21 @@
 //15/20 -> You got a C (75%)!
 // A 90-100, 80-89, 70-79, D 60-69, F 0-59
 
-let gradeCalc = function(score, totalScore) {
-    PercentScore = (score/totalScore)*100
+const gradeCalc = function(score, totalScore) {
+    const PercentScore = (score/totalScore)*100
+    let letterGrade = ''
     if (PercentScore>=90) {
-        grade = 'A'
+        letterGrade = 'A'
     } else if (PercentScore>=80) {
-        grade = 'B'
+        letterGrade = 'B'
     } else if (PercentScore>=70) {
-        grade = 'C'
+        letterGrade = 'C'
     } else if (PercentScore>=60) {
-        grade = 'D'
+        letterGrade = 'D'
     } else {
-        grade = 'F'
+        letterGrade = 'F'
     }
-    return grade
+    return letterGrade
 } 
 let score = 79
 let totalScore = 100
