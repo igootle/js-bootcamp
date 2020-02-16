@@ -15,6 +15,31 @@ const todos = [{
         completed: true
     }]
 
+// const sortTodos = function(todos) {
+//     todos.sort(function (a,b) {
+//         if (a.text.toLowerCase() < b.text.toLowerCase() ) {
+       
+//             return -1
+            
+//         } else if (a.text.toLowerCase() > b.text.toLowerCase()) {
+//             return 1
+//         } else {
+//             return 0
+//         }
+//     })
+// }
+
+const sortTodos2 = function(todos) {
+    todos.sort(function (a,b) {
+        if (!a.completed && b.completed ) { 
+            return -1 
+        } else if (a.completed && !b.completed ) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
 
 const deleteTodo = function (todos, todoText) {
     const index = todos.findIndex(function (todo){
@@ -27,8 +52,32 @@ const deleteTodo = function (todos, todoText) {
     }
 }
 
-deleteTodo(todos, 'Order rabbit food')
+
+
+sortTodos2(todos)
 console.log(todos)
+
+
+// const getThingsToDo = function(todos, query) {
+//     const getInfo = todos.filter(function(todo, index) {
+//         const todoIsMatch = todo.completed === query
+//         return todoIsMatch
+//     })
+//     return getInfo
+// }
+
+const getThingsToDo2 = function(todoIsMatch) {
+    return todos.filter(function(todo, index) {
+        return !todo.completed
+    })
+ 
+}
+
+// console.log(getThingsToDo(todos,true))
+// console.log(getThingsToDo2(todos))
+
+// deleteTodo(todos, 'Order rabbit food')
+// console.log(todos)
 
 
 
