@@ -1,34 +1,38 @@
-const todos = [{
-    text:'Order rabbit food',
-    completed: true
-}, {
-    text:'Clean kitchen',
-    completed: true
-}, {
-    text:'Running',
-    completed: false
-}, {
-    text:'Sleep',
-    completed: false
-}, {
-    text:'Eat',
-    completed: true
-}]
+let todos = getSavedTodos()
 
-const incompleteTodos = todos.filter(function (todo) {
-    return todo.completed
+const filters = {
+    searchText: '',
+    hideCompleted: false
+}
+
+renderTodos(todos,filters)
+
+document.querySelector('#search-text').addEventListener('input', (e) => {
+    filters.searchText = e.target.value
+    renderTodos(todos, filters)
+})
+
+document.querySelector('#new-todo').addEventListener('submit', function(e){
+    e.preventDefault()
+    todos.push({
+        id: uuidv4(),
+        text: e.target.elements.text.value,
+        completed: false
+    })
+    saveTodos(todos)
+    renderTodos(todos, filters)
+    e.target.elements.text.value = ''
+})
+
+document.querySelector('#hide-completed').addEventListener('change',function(e){
+    filters.hideCompleted = e.target.checked
+    renderTodos(todos, filters)
 })
 
 
-const summary = document.createElement('h2')
-summary.textContent = `You have ${incompleteTodos.length} todos left`
-document.querySelector('body').appendChild(summary)
 
-todos.forEach(function (todo) {
-    const p = document.createElement('p')
-    p.textContent = todo.text
-    document.querySelector('body').appendChild(p)
-})
+
+
 
 
 // You have 2 todos left (p element)
@@ -36,7 +40,20 @@ todos.forEach(function (todo) {
 
 // const ps = document.querySelectorAll('p') 
 // ps.forEach(function(ps){
-//     if (ps.textContent.includes('the')) {
-//         ps.remove()
-//     }
+    //     if (ps.textContent.includes('the')) {
+        //         ps.remove()
+        //     }
+        // })
+
+
+
+
+        //Listen for new todo createion
+        // document.querySelector('#add-todo').addEventListener('click',function (e){
+        //     console.log('Add a new todo...')
+        // })
+
+        //Listen for new todo creation
+// document.querySelector('#new-todo-text').addEventListener ('input', function(e){
+//     console.log(e.target.value)
 // })

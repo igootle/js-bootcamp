@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-    </head>
+    </head> 
     <body>
         <h1>Notes app</h1>
-        <h2>Notes app h2</h2>
-        <p>Notes app p</p>
-        <p>Notes app p2</p>
-        <p>Notes app p3</p>
-
+        <h2>Take notes and never forget</h2>
+        <label for="search-text">
+            Search: <input type="text" name="" id="search-text" placeholder="Filter todo">
+        </label>
+        <select name="" id="filter-by" >
+            <option value="byEdited">Sort by last edited</option>
+            <option value="byCreated">Sort by recently created</option>
+            <option value="alphabetical">Sort alphabetically</option>
+        </select>
+         
+        <div id="notes">
+        </div>
+        <button id="create-note">Create Note</button>
+       
+        <script src="uuidv4.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="notes-functions.js"></script>
         <script src="notes-app.js"></script>
+       
     </body>
 </html>
