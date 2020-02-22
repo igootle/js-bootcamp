@@ -19,6 +19,8 @@ document.querySelector('#create-note').addEventListener('click', function (e){
     updatedAt: timestamp
     })
     saveNotes(notes)
+    'use strict'
+   
     // renderNotes(notes, filters)
     location.assign(`edit.html#${id}`)
 })
